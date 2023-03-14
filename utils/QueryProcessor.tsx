@@ -11,8 +11,8 @@ export default function QueryProcessor(query: string): string {
       "David M. and Adriana P."
     );
   }
-  if (query.toLowerCase().includes("what is plus ?")) {
-    const regex = /(-?\d+(\.\d+)?)\s*\+\s*(-?\d+(\.\d+)?)/; // matches "x + y" pattern
+  if (query.toLowerCase().includes("plus")) {
+    const regex = /(-?\d+(\.\d+)?)\s*\"plus"\s*(-?\d+(\.\d+)?)/; // matches "x + y" pattern
     const match = regex.exec(query);
 
     if (match) {
@@ -21,12 +21,6 @@ export default function QueryProcessor(query: string): string {
       const sum = x + y;
       return "${sum}";
     }
-  }
-  if (query.toLowerCase().includes("which of the following numbers is the largest: 64, 20, 78?"
-  )) {
-  return (
-    "78"
-  );
   }
   return "";
 }
