@@ -21,6 +21,26 @@ export default function QueryProcessor(query: string): string {
       return `${sum}`;
     }
   }
+  if (query.toLowerCase().includes("minus")) {
+    const regex = /(\d+)\s*\minus\s*(\d+)/;
+    const match = query.match(regex);
+    if (match) {
+      const x = parseInt(match[1]);
+      const y = parseInt(match[2]);
+      const sum = x - y;
+      return `${sum}`;
+    }
+  }
+  if (query.toLowerCase().includes("multiplied")) {
+    const regex = /(\d+)\s*\multiplied\sby\s*(\d+)/;
+    const match = query.match(regex);
+    if (match) {
+      const x = parseInt(match[1]);
+      const y = parseInt(match[2]);
+      const sum = x * y;
+      return `${sum}`;
+    }
+  }
   if (query.toLowerCase().includes("largest")) {
     const regex = /which of the following numbers is the largest: (\d+), (\d+), (\d+)/; // regular expression to match "which of the following numbers is the largest: x, y, z"
     const match = query.toLowerCase().match(regex);
