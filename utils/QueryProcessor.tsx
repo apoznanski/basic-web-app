@@ -22,7 +22,8 @@ export default function QueryProcessor(query: string): string {
       const y = parseInt(match[2]);
       const sum = x + y;
       return `${sum}`;
-    }    
+       }    
+    }
     if (matches && matches.length > 1) {
       const regex = /(\d+)\s*\plus\s*(\d+)\s*\plus\s*(\d+)/;
       const match = query.match(regex);
@@ -32,9 +33,9 @@ export default function QueryProcessor(query: string): string {
       const z = parseInt(match[3]);
       const sum = x + y + z;
       return `${sum}`;
-    }    
+      }    
+     }
     }
-  }
   if (query.toLowerCase().includes("minus")) {
     const regex = /(\d+)\s*\minus\s*(\d+)/;
     const match = query.match(regex);
