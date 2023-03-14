@@ -12,13 +12,27 @@ export default function QueryProcessor(query: string): string {
     );
   }
   if (query.toLowerCase().includes("plus")) {
-    const regex = /(\d+)\s*\plus\s*(\d+)/;
-    const match = query.match(regex);
-    if (match) {
+    const regex = /plus/gi; // regular expression to match "plus" globally and case-insensitively
+    const matches = query.match(regex);
+    if (matches && matches.length == 1) {
+      const regex = /(\d+)\s*\plus\s*(\d+)/;
+      const match = query.match(regex);
+      if (match) {
       const x = parseInt(match[1]);
       const y = parseInt(match[2]);
       const sum = x + y;
       return `${sum}`;
+    }    
+    if (matches && matches.length > 1) {
+      const regex = /(\d+)\s*\plus\s*(\d+)\s*\plus\s*(\d+)/;
+      const match = query.match(regex);
+      if (match) {
+      const x = parseInt(match[1]);
+      const y = parseInt(match[2]);
+      const z = parseInt(match[3]);
+      const sum = x + y + z;
+      return `${sum}`;
+    }    
     }
   }
   if (query.toLowerCase().includes("minus")) {
