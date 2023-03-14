@@ -11,7 +11,7 @@ export default function QueryProcessor(query: string): string {
       "David M. and Adriana P."
     );
   }
-  if (query.toLowerCase().includes("what is + ?")) {
+  if (query.toLowerCase().includes("what is plus ?")) {
     const regex = /(-?\d+(\.\d+)?)\s*\+\s*(-?\d+(\.\d+)?)/; // matches "x + y" pattern
     const match = regex.exec(query);
 
