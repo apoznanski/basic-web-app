@@ -12,14 +12,13 @@ export default function QueryProcessor(query: string): string {
     );
   }
   if (query.toLowerCase().includes("plus")) {
-    const regex = /(-?\d+(\.\d+)?)\s*\"plus"\s*(-?\d+(\.\d+)?)/; // matches "x + y" pattern
-    const match = regex.exec(query);
-
+    const regex = /(\d+)\s*\+\s*(\d+)/;
+    const match = query.match(regex);
     if (match) {
-      const x = parseFloat(match[1]); // extract x as float from regex match
-      const y = parseFloat(match[3]); // extract y as float from regex match
+      const x = parseInt(match[1]);
+      const y = parseInt(match[2]);
       const sum = x + y;
-      return "${sum}";
+      return `${sum}`;
     }
   }
   return "";
