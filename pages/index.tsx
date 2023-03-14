@@ -17,7 +17,6 @@ export default function Home() {
       />
       <div>
         {QueryProcessor(query) == "" ? "No Match" : QueryProcessor(query)}
-        {QueryProcessor(query) == "What is your name?" ? "David M. and Adriana P." : QueryProcessor(query)}
       </div>
     </div>
   );

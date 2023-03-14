@@ -17,4 +17,10 @@ describe("QueryProcessor", () => {
             "writer in the English language and the world's pre-eminent dramatist."
           ));
     });
+    test("should return name", () => {
+        const query = "What is your name?";
+        const response: string = QueryProcessor(query);
+        expect(typeof response).toBe("David M. and Adriana P.");
+    });
+
 });
