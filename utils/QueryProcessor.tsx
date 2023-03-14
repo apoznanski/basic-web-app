@@ -53,5 +53,31 @@ export default function QueryProcessor(query: string): string {
       return `${largest}`;
     }
   }
+  if (query.toLowerCase().includes("primes")) {
+    const regex = /Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)/; // regular expression to match "Which of the following numbers are primes: x, y, z, a, b?"
+    const match = query.toLowerCase().match(regex);
+    
+    if (match) {
+      const x = parseInt(match[1]);
+      const y = parseInt(match[2]);
+      const z = parseInt(match[3]);
+      const a = parseInt(match[4]);
+      const b = parseInt(match[5]);
+  
+      const primes = [x, y, z, a, b].filter((num) => {
+        if (num < 2) {
+          return false;
+        }
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) {
+            return false;
+          }
+        }
+        return true;
+      });
+      
+      return `${primes.join(", ")}`;
+    }
+  }
   return "";
 }
