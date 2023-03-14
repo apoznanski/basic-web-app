@@ -21,5 +21,17 @@ export default function QueryProcessor(query: string): string {
       return `${sum}`;
     }
   }
+  if (query.toLowerCase().includes("largest")) {
+    const regex = /which of the following numbers is the largest: (\d+), (\d+), (\d+)/; // regular expression to match "which of the following numbers is the largest: x, y, z"
+    const match = query.toLowerCase().match(regex);
+    
+    if (match) {
+      const x = parseInt(match[1]);
+      const y = parseInt(match[2]);
+      const z = parseInt(match[3]);
+      const largest = Math.max(x, y, z);
+      return `${largest}`;
+    }
+  }
   return "";
 }
