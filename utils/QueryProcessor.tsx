@@ -12,7 +12,7 @@ export default function QueryProcessor(query: string): string {
     );
   }
   if (query.toLowerCase().includes("plus")) {
-    const regex = /(\d+)\s*\+\s*(\d+)/;
+    const regex = /(\d+)\s*\plus\s*(\d+)/;
     const match = query.match(regex);
     if (match) {
       const x = parseInt(match[1]);
